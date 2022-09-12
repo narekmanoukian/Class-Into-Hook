@@ -1,38 +1,34 @@
-import React, { Component } from "react";
-import "./Class.css"
+import React, {useState} from "react";
+import "./Hook.css"
 
-export class Hook extends Component {
-     state = {login: "", password: ""}
-}
-     setLogin = (event) =>{
-      this.setState({login:event.target.value})
-     }
-     setPassword = (event) =>{
-      this.setState({password:event.target.value})
-     }
-     onSubmit = (event) =>{
+export const Hook  = () => {
+     const [login,setLogin] = useState("")
+     const [password,setPassword] = useState("")
+
+     
+    const onSubmit = (event) =>{
       event.preventDefault()
     
       alert("Yep")
-     }
+     
 
   
   return (
-    <form onSubmit={this.onSubmit}>
+    <form onSubmit={onSubmit}>
      
       <label htmlFor="login">Login</label>
       <input
-        onChange={this.setLogin}
+        onChange={(event) => setLogin(event.target.value)}
         id="login"
         name="login"
         type="text"
       />
       <label htmlFor="password">Password</label>
-      <input onChange={this.setPassword}
+      <input onChange={(event) => setPassword(event.target.value)}
         id="login"
         name="password"
         type="password"
       />
       <button type="submit">Log in</button>
     </form>
-  )
+  )}}
